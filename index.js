@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: 'https://assingment-frontend-y4ep.vercel.app/',
+  origin: 'https://assingment-frontend-y4ep.vercel.app',
   methods: ['GET', 'POST', 'DELETE'],
   credentials: true
 }));
