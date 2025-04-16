@@ -3,7 +3,9 @@ import pg from "pg";
 import env from "dotenv";
 import bodyParser from "body-parser";
 import cors from "cors"
-import {Pool} from "pg"
+import pkg from "pg";  // Import the whole package
+const { Pool } = pkg;
+
 
 env.config();
 const app = express()
