@@ -3,21 +3,18 @@ import pg from "pg";
 import env from "dotenv";
 import bodyParser from "body-parser";
 import cors from "cors"
+import {Pool} from "pg"
 
 env.config();
 const app = express()
 const port = 3000;
 
-const db=new pg.Client
-({
-  user:process.env.DB_USER,
-  host:"localhost",
-  database:process.env.DB_NAME,
-  password:process.env.DB_PASSWORD,
-  port:process.env.DB_PORT,
+const db = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // For Neon/Heroku/Vercel SSL handling
+  },
 });
-  
-db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
